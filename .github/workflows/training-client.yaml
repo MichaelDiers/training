@@ -7,12 +7,16 @@ on:
 jobs:
   main:
     runs-on: ubuntu-latest
+    env:
+      HOMEPAGE: https://michaeldiers.github.io/training
     steps:
       - uses: actions/checkout@v3
       - name: install dependencies
         run: npm install
       - name: install gh-pages
         run: npm install gh-pages
+      - name: add homepage
+        run: jq '. + {homepage: "${{ env.HOMEPAGE }}"}'
       - name: build
         run: npm run build
       - name: deploy using gh-pages
