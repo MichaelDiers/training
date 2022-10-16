@@ -19,7 +19,7 @@ jobs:
         run: cat package.json
       - name: add homepage
         run: |
-          cat package.json | jq '. + {homepage: "${{ env.HOMEPAGE }}"}'
+          echo `cat package.json | jq '. + {homepage: "${{ env.HOMEPAGE }}"}'`
       - name: add homepage
         run: |
           cat package.json | jq '. + {homepage: "${{ env.HOMEPAGE }}"}' > package.json
