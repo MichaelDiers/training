@@ -16,7 +16,9 @@ jobs:
       - name: install gh-pages
         run: npm install gh-pages
       - name: add homepage
-        run: jq '. + {homepage: "${{ env.HOMEPAGE }}"}'
+        run: |
+          cat package.json | jq '. + {homepage: "${{ env.HOMEPAGE }}"}'
+        run: 
       - name: build
         run: npm run build
       - name: deploy using gh-pages
